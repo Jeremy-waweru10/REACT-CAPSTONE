@@ -1,12 +1,73 @@
-# React + Vite
+# FlashLearn
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A professional, React-powered flashcard app with login, CRUD, study modes, and localStorage persistence—built with Vite for fast HMR and modern tooling.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- **User Authentication** (mock)  
+  - Login / Logout flow with `AuthContext`
+  - Protected “Flashcards” and “Study” routes  
+- **Flashcard Management**  
+  - Create, Edit, Delete cards via `FlashcardForm` & `FlashcardList`
+  - Categorize by subject/topic  
+- **Study Modes**  
+  - **Sequential**: review in creation order  
+  - **Random**: random-shuffled review  
+  - Progress indicator (current / total)  
+- **Persistence**  
+  - All data persisted in `localStorage` via custom `storage` utilities  
+- **Responsive UI**  
+  - Deep-blue Navbar & Footer, single-file theming (`index.css`)
+  - Mobile-friendly navbar wrapping, flexible layout
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠 Tech Stack
+
+- **Vite** (React template)  
+- **React 18** + **React Router v6**  
+- **Context + useReducer** for state  
+- **Vanilla CSS** with CSS variables, responsive utilities  
+- **localStorage** for data persistence  
+
+---
+
+## 📂 Project Structure
+
+```plain
+my-flashcard-app/
+├── public/
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   ├── Footer.jsx
+│   │   ├── ProtectedRoute.jsx
+│   │   ├── FlashcardForm.jsx
+│   │   └── FlashcardList.jsx
+│   ├── context/
+│   │   ├── AuthContext.jsx
+│   │   └── FlashcardContext.jsx
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── Login.jsx
+│   │   ├── Flashcards.jsx
+│   │   └── Study.jsx
+│   ├── utils/
+│   │   └── storage.js
+│   ├── App.jsx
+│   ├── index.jsx
+│   └── index.css
+├── package.json
+└── README.md
+
+## Clone the repo
+git clone https://github.com/yourusername/my-flashcard-app.git
+
+Change directory
+cd my-flashcard-app
+
+Profile
+https://github.com/Jeremy-waweru10
