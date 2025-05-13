@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useFlashcards } from '../context/FlashcardContext';
-// import FlashcardForm from '../components/FlashcardForm';
+import FlashcardForm from '../components/FlashcardForm';
 import FlashcardList from '../components/FlashcardList';
 
 export default function Flashcards() {
