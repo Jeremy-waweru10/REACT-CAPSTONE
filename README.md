@@ -67,8 +67,10 @@ my-flashcard-app/
 
 git clone https://github.com/yourusername/my-flashcard-app.git
 
-Change directory
+##Change directory
+
 cd my-flashcard-app
 
-Profile
+##Profile
+
 https://github.com/Jeremy-waweru10
