@@ -64,6 +64,7 @@ my-flashcard-app/
 └── README.md
 
 ## Clone the repo
+
 git clone https://github.com/yourusername/my-flashcard-app.git
 
 Change directory

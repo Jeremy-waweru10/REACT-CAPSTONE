@@ -2,12 +2,13 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 export default function Navbar() {
+    //user-tells  if someone is logged in or not.
   const { user, logout } = useAuth();
-  const navigate = useNavigate();
+  const navigate = useNavigate();//redirect the user after they log out 
 
   const handleLogout = () => {
-    logout();
-    navigate('/login');
+    logout();// // Clear user data
+    navigate('/login');// Redirect to login page
   };
 
   return (
@@ -20,7 +21,7 @@ export default function Navbar() {
               Home
             </NavLink>
           </li>
-          {user && (
+          {user && (//links only show up if the user is logged in
             <>
               <li>
                 <NavLink to="/flashcards">Flashcards</NavLink>
@@ -30,12 +31,13 @@ export default function Navbar() {
               </li>
             </>
           )}
-          {!user ? (
+          {!user ? (//If the user is not logged in (!user), show the Login link.
             <li>
               <NavLink to="/login">Login</NavLink>
             </li>
           ) : (
             <li>
+               {/* Logout button that calls handleLogout   */}
               <button onClick={handleLogout}>Logout</button>
             </li>
           )}

@@ -1,24 +1,24 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-
+//create Context
 const AuthContext = createContext();
 
-export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
+export function AuthProvider({ children }) {//wraps the whole app or parts of it and provides the context to its children.
+  const [user, setUser] = useState(null);//logged-in status
 
   useEffect(() => {
-    const stored = localStorage.getItem('user');
-    if (stored) setUser(JSON.parse(stored));
+    const stored = localStorage.getItem('user');//checks if the user is saved in localStorage
+    if (stored) setUser(JSON.parse(stored));//If yes, it loads that user into state using setUser()
   }, []);
 
   const login = (username) => {
     const u = { username };
-    setUser(u);
-    localStorage.setItem('user', JSON.stringify(u));
+    setUser(u);//saves in state  (setUser).
+    localStorage.setItem('user', JSON.stringify(u));//Also saves it in localStorage to keep them logged in.
   };
 
   const logout = () => {
-    setUser(null);
-    localStorage.removeItem('user');
+    setUser(null);//clears
+    localStorage.removeItem('user');//Removes user data from localStorage.
   };
 
   return (
