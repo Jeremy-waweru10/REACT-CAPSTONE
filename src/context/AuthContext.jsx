@@ -1,31 +1,52 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-//create Context
+
 const AuthContext = createContext();
 
-export function AuthProvider({ children }) {//wraps the whole app or parts of it and provides the context to its children.
-  const [user, setUser] = useState(null);//logged-in status
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null); // { username, email, password }
+  const [loading, setLoading] = useState(true);
 
+  // Load user from localStorage on initial render
   useEffect(() => {
-    const stored = localStorage.getItem('user');//checks if the user is saved in localStorage
-    if (stored) setUser(JSON.parse(stored));//If yes, it loads that user into state using setUser()
+    try {
+      const storedUser = localStorage.getItem('flashcardUser');
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
+    } catch (error) {
+      console.error('Error loading user from localStorage:', error);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
-  const login = (username) => {
-    const u = { username };
-    setUser(u);//saves in state  (setUser).
-    localStorage.setItem('user', JSON.stringify(u));//Also saves it in localStorage to keep them logged in.
+  // Login - accepts full user credentials
+  const login = ({ username, email, password }) => {
+    const newUser = { username, email, password };
+    setUser(newUser);
+    localStorage.setItem('flashcardUser', JSON.stringify(newUser));
   };
 
+  // Logout - clear user and localStorage
   const logout = () => {
-    setUser(null);//clears
-    localStorage.removeItem('user');//Removes user data from localStorage.
+    setUser(null);
+    localStorage.removeItem('flashcardUser');
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
-      {children}
+    <AuthContext.Provider value={{ user, login, logout, loading }}>
+      {!loading && children}
     </AuthContext.Provider>
   );
 }
 
-export const useAuth = () => useContext(AuthContext);
+// Hook to access context
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+};
+
+

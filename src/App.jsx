@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Flashcards from './pages/FlashCard';
 import Study from './pages/Study';
 import ProtectedRoute from './components/Protected Route';
+import Signup from './pages/Signup';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />}/>
           <Route
             path="/flashcards"
             element={
