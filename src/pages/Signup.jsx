@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const Signup = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -42,8 +43,7 @@ const Signup = () => {
     navigate('/'); // Redirect to home page
   };
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
-      <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
+    <div className="signup-container">
         <h2 className="text-2xl font-bold text-center mb-6">Create an Account</h2>
         {error && <p className="text-red-500 mb-4 text-sm">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -102,14 +102,14 @@ const Signup = () => {
             Sign Up
           </button>
         </form>
-        <p className="mt-4 text-sm text-center text-gray-600">
+        <p className="text-center text-sm mt- text-black">
           Already have an account?{' '}
           <a href="/login" className="text-blue-600 hover:underline">
             Log in
           </a>
         </p>
       </div>
-    </div>
+    
   );
 };
 export default Signup;

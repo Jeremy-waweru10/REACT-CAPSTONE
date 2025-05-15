@@ -7,10 +7,13 @@ export default function Flashcards() {
   const { flashcards, dispatch } = useFlashcards();
   const [editing, setEditing] = useState(null);
 
+  
   const handleSave = (card) => {
     dispatch({ type: editing ? 'UPDATE' : 'ADD', payload: card });
     setEditing(null);
   };
+
+  
 
   return (
     <div className="container">
