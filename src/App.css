@@ -1,6 +1,6 @@
 /* 1. Theme Variables */
 :root {
-  --dark-bg: #004578;       /* deep professional blue */
+  --dark-bg: #004578;
   --light-bg: #f4f6f8;
   --white: #ffffff;
   --text: #333333;
@@ -32,12 +32,12 @@ body {
 
 /* 3. Layout Utilities */
 .container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 2rem auto;
   padding: 0 1rem;
   width: 100%;
 }
-.flex { display: flex; }
+.flex { display: flex; flex-wrap: wrap; }
 .space-between { justify-content: space-between; }
 .center { align-items: center; justify-content: center; }
 .mt-1 { margin-top: 1rem; }
@@ -52,33 +52,24 @@ nav {
   position: sticky;
   top: 0;
   z-index: 1000;
-  
 }
-
-
-/* Navbar Container */
 nav .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
-
-/* Logo Styling */
 nav .logo {
   font-size: 1.8rem;
   font-weight: 600;
   letter-spacing: 1px;
-  
 }
-
-/* Navigation Links */
 nav ul {
   list-style: none;
   display: flex;
   gap: 1.5rem;
+  flex-wrap: wrap;
 }
-
-/* Navbar Links */
 nav a, nav button {
   color: var(--text-light);
   padding: 0.5rem 0.75rem;
@@ -86,37 +77,27 @@ nav a, nav button {
   font-weight: 500;
   transition: background var(--transition), color var(--transition);
   text-decoration: none;
-  background: transparent; /* Ensure no default background */
+  background: transparent;
 }
-
-/* Fix: Hover effect ONLY for non-active links */
 nav a:not(.active):hover {
   background: #005bb5;
   text-decoration: underline;
 }
-
-/* Fix: Active class ONLY applies to selected link */
 nav a.active {
-  /* background: #0066cc; */
   font-weight: bold;
   text-decoration: underline;
 }
-
-/* Fix: Ensure non-active links reset background */
 nav a:not(.active) {
   background: transparent !important;
 }
-
-/* Mobile Nav */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   nav .container {
     flex-direction: column;
     align-items: flex-start;
   }
   nav ul {
-    flex-wrap: wrap;
     margin-top: 0.5rem;
-    gap: 0.5rem;
+    gap: 0.75rem;
   }
 }
 
@@ -132,6 +113,7 @@ footer .container {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 1rem;
 }
 footer p {
   margin-bottom: 0.5rem;
@@ -141,6 +123,7 @@ footer ul {
   list-style: none;
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 footer a {
   color: #ccc;
@@ -186,15 +169,22 @@ input:focus, textarea:focus, select:focus {
 
 /* 7. Forms */
 .form-group { margin-top: 1rem; }
-.form-inline { display: flex; gap: 1rem; align-items: center; }
-.form-inline input { flex: 1; }
+.form-inline {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.form-inline input {
+  flex: 1;
+  min-width: 180px;
+}
 
 /* 8. Flashcard List */
 .flashcard-list {
   list-style: none;
   margin-top: 1rem;
 }
-
 .flashcard-list li {
   background: var(--white);
   padding: 1.2rem;
@@ -205,26 +195,22 @@ input:focus, textarea:focus, select:focus {
   justify-content: space-between;
   box-shadow: 0 1px 3px var(--shadow-light);
   position: relative;
-  min-height: 180px; /* ensures enough space for content + buttons */
+  min-height: 180px;
 }
-
 .flashcard-list .content {
   flex: 1;
   margin-bottom: 1rem;
 }
-
 .flashcard-list .actions {
   display: flex;
   justify-content: flex-end;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
-
 .flashcard-list .actions button {
   padding: 0.45rem 0.9rem;
   font-size: 0.9rem;
-  border-radius: var(--radius);
 }
-
 
 /* 9. Study Card */
 .card {
@@ -237,28 +223,7 @@ input:focus, textarea:focus, select:focus {
 .mode-switch { margin-bottom: 1rem; }
 
 /* 10. Login Page */
-.login-container {
-  max-width: 400px;
-  margin: 6rem auto;
-  padding: 2.5rem;
-  background: var(--white);
-  border-radius: calc(var(--radius) * 1.25);
-  box-shadow: 0 2px 8px var(--shadow-light);
-}
-.login-container h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
-  color: var(--dark-bg);
-}
-.login-container p {
-  text-align: center;
-  margin-top: 1rem;
-  font-size: 0.875rem;
-  color: #000; /* Changed from var(--text-light, #666) */
-}
-.login-container form { margin-top: 1rem; }
-
+.login-container,
 .signup-container {
   max-width: 400px;
   margin: 6rem auto;
@@ -267,24 +232,20 @@ input:focus, textarea:focus, select:focus {
   border-radius: calc(var(--radius) * 1.25);
   box-shadow: 0 2px 8px var(--shadow-light);
 }
-
+.login-container h2,
 .signup-container h2 {
   text-align: center;
   margin-bottom: 1.5rem;
   font-weight: 600;
   color: var(--dark-bg);
 }
-
-.signup-container form {
+.login-container p,
+.signup-container p {
+  text-align: center;
   margin-top: 1rem;
-}
-
-.signup-container .error {
-  color: var(--error-color, red);
   font-size: 0.875rem;
-  margin-bottom: 1rem;
+  color: #000;
 }
-
 .signup-container input {
   width: 100%;
   padding: 0.625rem 0.75rem;
@@ -293,12 +254,10 @@ input:focus, textarea:focus, select:focus {
   border-radius: 5px;
   font-size: 0.95rem;
 }
-
 .signup-container label {
   font-size: 0.875rem;
   color: var(--text-dark, #333);
 }
-
 .signup-container button {
   width: 100%;
   background: var(--primary-color, #2563eb);
@@ -310,41 +269,29 @@ input:focus, textarea:focus, select:focus {
   margin-top: 1rem;
   transition: background 0.3s ease;
 }
-
 .signup-container button:hover {
   background: var(--primary-dark, #1e40af);
 }
-
-/* ✅ FIXED this to be darker */
-.signup-container p {
-  text-align: center;
-  margin-top: 1rem;
-  font-size: 0.875rem;
-  color: #000; /* Changed from var(--text-light, #666) */
-}
-
 .signup-container a {
   color: var(--primary-color, #2563eb);
   text-decoration: none;
 }
-
 .signup-container a:hover {
   text-decoration: underline;
 }
 
+/* 11. Home & Hero Section */
 .home-container {
   text-align: center;
-  padding: 2rem;
+  padding: 2rem 1rem;
 }
-
 .hero {
   background: linear-gradient(to right, #1e3a8a, #3b82f6);
   color: white;
   padding: 3.5rem;
   border-radius: 12px;
-  margin-bottom: 2rem; /* Creates smooth transition */
+  margin-bottom: 2rem;
 }
-
 .start-btn {
   background-color: #ff5733;
   color: white;
@@ -354,75 +301,137 @@ input:focus, textarea:focus, select:focus {
   border-radius: 8px;
   transition: 0.3s;
 }
-
 .start-btn:hover {
   background-color: #c70039;
   transform: scale(1.05);
 }
 
-.snippet-section {
-  padding: 2rem;
-  background: #f8f9fa;
-  border-radius: 12px;
-  width: 100%;
-}
+/* 12. Snippet Section */
+/* ===========================
+   Snippet Section Base Styles
+   =========================== */
+   .snippet-section {
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    width: 100%;
+    /* center content on large screens */
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .snippet-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(360px, 1fr)); /* 3 columns */
+    gap: 24px;
+    justify-content: center;
+  }
+  
+  .snippet-card {
+    padding: 1.5rem;
+    background: white;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    height: 250px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .snippet-card:hover {
+    transform: scale(1.03);
+  }
+  
+  .snippet-card h3 {
+    font-size: 1.25rem; /* 20px */
+    color: #333;
+    margin-bottom: 0.625rem; /* 10px */
+  }
+  
+  .snippet-card p {
+    font-size: 0.875rem; /* 14px */
+    color: #666;
+    flex-grow: 1;
+    margin-bottom: 0.75rem; /* 12px */
+  }
+  
+  .view-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 0.625rem 1rem; /* 10px 16px */
+    border-radius: 6px;
+    font-size: 0.875rem; /* 14px */
+    text-align: center;
+    transition: background 0.3s, transform 0.1s;
+  }
+  
+  .view-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+  
+  /* Pinned login prompt inside the card */
+  .login-prompt {
+    font-size: 0.875rem; /* 14px */
+    color: #007bff;
+    text-align: center;
+    padding: 0.5rem 0.75rem; /* 8px */
+    background: #eef3ff;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-top: auto;        /* push to bottom */
+    align-self: flex-start;  /* don’t stretch full width */
+  }
+  
+  /* ===========================
+     Responsive Breakpoints
+     =========================== */
+  @media (max-width: 1200px) {
+    .snippet-section {
+      padding: 1.5rem;
+    }
+    .snippet-grid {
+      grid-template-columns: repeat(2, minmax(300px, 1fr)); /* 2 columns */
+      gap: 16px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .snippet-section {
+      padding: 1rem;
+    }
+    .snippet-grid {
+      grid-template-columns: 1fr; /* single column */
+      gap: 12px;
+    }
+    .snippet-card {
+      height: auto; /* let content define height */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .snippet-section {
+      padding: 0.75rem;
+    }
+    .snippet-card h3 {
+      font-size: 1.125rem; /* slightly smaller */
+    }
+    .snippet-card p {
+      font-size: 0.8125rem; /* slightly smaller */
+    }
+    .view-btn {
+      width: 100%;
+    }
+  }
+  
 
-.snippet-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(360px, 1fr)); /* Wider snippet cards */
-  gap: 24px;
-  justify-content: center;
-}
 
-.snippet-card {
-  padding: 1.5rem;
-  background: white;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
-  height: 250px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: 0.3s ease-in-out;
-}
 
-.snippet-card:hover {
-  transform: scale(1.03);
-}
-
-.snippet-card h3 {
-  font-size: 20px;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.snippet-card p {
-  font-size: 14px;
-  color: #666;
-}
-
-.view-btn {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 6px;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-.view-btn:hover {
-  background-color: #0056b3;
-}
-
-.login-prompt {
-  font-size: 14px;
-  color: #007bff;
-  text-align: center;
-  padding: 8px;
-  background: #eef3ff;
-  border-radius: 6px;
-  font-weight: bold;
-  margin-top: auto; /* Pushes login prompt to the bottom */
-  display: block; /* Ensures it is visible */
+/* Optional: Scroll Responsiveness for Edge Cases */
+@media (max-width: 480px) {
+  html {
+    font-size: 15px;
+  }
 }
